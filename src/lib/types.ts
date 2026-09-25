@@ -35,7 +35,7 @@ export type StudentProfile = {
   count: number;
 };
 export type ParsedProfile = { profile: StudentProfile; notices: string[] };
-export type Band = 'Reach' | 'Target' | 'Safety' | 'Explore';
+export type Band = 'Reach' | 'Target' | 'Safety' | 'Not enough data';
 export type Evidence = { label: string; text: string; url: string };
 export type Recommendation = {
   college: College;

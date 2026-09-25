@@ -33,7 +33,7 @@ export default function App() {
   const [error, setError] = useState('');
   const [status, setStatus] = useState('');
   const [pdfBusy, setPdfBusy] = useState(false);
-  const [filter, setFilter] = useState<Exclude<Band, 'Explore'> | 'All'>('All');
+  const [filter, setFilter] = useState<Exclude<Band, 'Not enough data'> | 'All'>('All');
   const textarea = useRef<HTMLTextAreaElement>(null);
   const heading = useRef<HTMLHeadingElement>(null);
   const dirty = JSON.stringify(profile) !== JSON.stringify(draft) || prompt !== appliedPrompt;

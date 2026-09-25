@@ -361,9 +361,10 @@ export function StudentPdf({
         <Text style={styles.fine}>
           Reach: the college is highly selective, or your score is below the institutional
           comparator. Target: your score is near or above the comparator; selectivity still matters.
-          Safety: your score is above it and the overall admission rate is at least 65%. Explore:
-          comparable information is missing. No category guarantees admission or affordability. GPA,
-          awards, and AP results are not used to compute these categories.
+          Safety: your score is above it and the overall admission rate is at least 65%. Not enough
+          data: a student score, comparable college score, or admission rate is missing. No category
+          guarantees admission or affordability. GPA, awards, and AP results are not used to compute
+          these categories.
         </Text>
         <Text style={[styles.fine, { marginTop: 10 }]}>
           This prototype uses US public and private nonprofit bachelor’s institutions. Marine

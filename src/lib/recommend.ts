@@ -20,13 +20,13 @@ export const BAND_DESCRIPTIONS: Record<Band, string> = {
     'Your score is near or above the reported institutional comparator. Overall selectivity still matters; this is not a prediction.',
   Safety:
     'Your score is above the reported average and the overall admission rate is at least 65%. Admission is still uncertain.',
-  Explore:
-    'There is not enough comparable test data to estimate academic fit. Review the requirements together.',
+  'Not enough data':
+    'A student SAT/ACT score, a comparable college score, or the college admission rate is missing. We cannot assign Safety, Target, or Reach.',
 };
 
 export function admissionBand(c: College, p: StudentProfile): Band {
   // Never infer scores from "middling", a GPA, narrative, demographics, or missing data.
-  if (p.sat === null && p.act === null) return 'Explore';
+  if (p.sat === null && p.act === null) return 'Not enough data';
   if (c.admissionRate !== null && c.admissionRate < 0.25) return 'Reach';
   const difference =
     p.sat !== null && c.satAverage !== null
@@ -34,7 +34,7 @@ export function admissionBand(c: College, p: StudentProfile): Band {
       : p.act !== null && c.actMidpoint !== null
         ? (p.act - c.actMidpoint) / 3
         : null;
-  if (difference === null || c.admissionRate === null) return 'Explore';
+  if (difference === null || c.admissionRate === null) return 'Not enough data';
   if (difference < -1) return 'Reach';
   if (difference >= 1 && c.admissionRate >= 0.65) return 'Safety';
   return 'Target';
@@ -147,7 +147,7 @@ export function recommend(
         considerations.push(
           'Treat this as an ambitious option. Institution-wide figures can mask more selective majors.',
         );
-      if (band === 'Explore')
+      if (band === 'Not enough data')
         considerations.push(
           'Academic fit is unclassified because comparable scores or admission data are missing.',
         );
@@ -168,7 +168,9 @@ export function recommend(
           ? `Student SAT ${p.sat}; reported college average ${c.satAverage}.`
           : p.act !== null && c.actMidpoint !== null
             ? `Student ACT ${p.act}; reported college midpoint ${c.actMidpoint}.`
-            : 'No comparable student and college test score is available.';
+            : p.sat === null && p.act === null
+              ? 'No student SAT or ACT score was provided.'
+              : 'The college has no reported score comparable to the student’s SAT or ACT.';
       const academicContext = `${comparator} ${c.admissionRate === null ? 'Overall admission rate is not reported.' : `Overall admission rate: ${Math.round(c.admissionRate * 100)}%.`} This is not a personal admission probability.`;
       return { college: c, band, score, reasons, considerations, evidence, academicContext };
     })

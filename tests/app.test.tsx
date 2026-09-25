@@ -89,7 +89,7 @@ describe('counselor workflow', () => {
     const user = await generate();
     const all = screen.getByRole('button', { name: /^All / });
     expect(all).toHaveAttribute('aria-pressed', 'true');
-    expect(screen.queryByRole('button', { name: /^Explore / })).not.toBeInTheDocument();
+    expect(screen.queryByRole('button', { name: /^Not enough data / })).not.toBeInTheDocument();
     expect(screen.queryByRole('button', { name: /^Broader access / })).not.toBeInTheDocument();
     const selection = screen.getByRole('complementary', { name: 'Selected colleges' });
     const originalSelection = selection.textContent;
@@ -408,7 +408,7 @@ describe('counselor workflow', () => {
   it('keeps sparse academic scores blank and all marine results exploratory', async () => {
     const user = await generate(1);
     expect(screen.getByRole('button', { name: 'All 6' })).toHaveAttribute('aria-pressed', 'true');
-    expect(screen.queryByRole('button', { name: /^Explore / })).not.toBeInTheDocument();
+    expect(screen.queryByRole('button', { name: /^Not enough data / })).not.toBeInTheDocument();
     expect(screen.queryByRole('button', { name: 'Show more colleges' })).not.toBeInTheDocument();
     expect(screen.getByRole('button', { name: 'Reach 0' })).toBeDisabled();
     await user.click(screen.getByRole('button', { name: 'Edit preferences' }));

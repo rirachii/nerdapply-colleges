@@ -210,7 +210,7 @@ export function parseStudent(text: string): ParsedProfile {
     );
   if (sat === null && act === null)
     notices.push(
-      'No numeric SAT or ACT score was provided. The list will use Explore labels, with no admission-fit estimate.',
+      'No numeric SAT or ACT score was provided. Schools will be labeled “Not enough data” until a comparable score is available.',
     );
   if (gpa !== null)
     notices.push(

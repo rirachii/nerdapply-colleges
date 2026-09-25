@@ -1015,7 +1015,7 @@ h1:focus {
   --band-background: #eef3f6;
   --band-color: #476880;
 }
-.band-explore {
+.band-not-enough-data {
   --band-background: #f2eff6;
   --band-color: #6b587f;
 }

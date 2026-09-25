@@ -220,10 +220,10 @@ describe('recommendations and uncertainty', () => {
     }
     expect(r.items.some((item) => item.college.name === 'Drexel University')).toBe(true);
   });
-  it('uses only verified marine pathways and Explore for the sparse example', () => {
+  it('uses only verified marine pathways and Not enough data for the sparse example', () => {
     const r = recommend(marine());
     expect(r.items).toHaveLength(6);
-    expect(r.items.every((i) => i.band === 'Explore')).toBe(true);
+    expect(r.items.every((i) => i.band === 'Not enough data')).toBe(true);
     for (const item of r.items)
       expect(specialties[item.college.id].some((s) => s.subject === 'marine')).toBe(true);
   });
@@ -246,10 +246,12 @@ describe('recommendations and uncertainty', () => {
       ).toBeLessThanOrEqual(2);
   });
   it('missing scores never become a Reach, even at highly selective colleges', () =>
-    expect(admissionBand({ ...colleges[0], admissionRate: 0.05 }, marine())).toBe('Explore'));
-  it('missing school data remains Explore', () =>
+    expect(admissionBand({ ...colleges[0], admissionRate: 0.05 }, marine())).toBe(
+      'Not enough data',
+    ));
+  it('missing school data remains Not enough data', () =>
     expect(admissionBand({ ...colleges[0], satAverage: null, admissionRate: null }, john())).toBe(
-      'Explore',
+      'Not enough data',
     ));
   it('uses ACT if no comparable SAT exists', () =>
     expect(

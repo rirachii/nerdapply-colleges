@@ -79,7 +79,10 @@ export function CollegeCard({
             </p>
           </div>
           <div className="college-selection">
-            <span className={`band band-${item.band.toLowerCase().replace(' ', '-')}`}>
+            <span
+              className={`band band-${item.band.toLowerCase().replaceAll(' ', '-')}`}
+              title={item.band === 'Not enough data' ? item.academicContext : undefined}
+            >
               {item.band}
             </span>
           </div>

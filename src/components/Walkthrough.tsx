@@ -221,7 +221,7 @@ export function Walkthrough() {
                 Reach: admission rate below 25%, or a score more than 100 SAT points / 3 ACT points
                 below the institutional comparator. Safety: at least 100 SAT points / 3 ACT points
                 above and admission rate at least 65%. Otherwise Target, when data is available.
-                Missing student scores always mean Explore. These are uncalibrated heuristics, not
+                Missing student scores mean Not enough data. These are uncalibrated heuristics, not
                 validated admission predictions.
               </p>
             </div>
