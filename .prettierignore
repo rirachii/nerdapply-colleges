@@ -1,0 +1,7 @@
+node_modules
+dist
+output
+.vercel
+src/data/colleges.json
+src/data/metadata.json
+package-lock.json

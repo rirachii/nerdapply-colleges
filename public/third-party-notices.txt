@@ -1,0 +1,35 @@
+# Third-party component notices
+
+## Coss UI
+
+Source: https://github.com/cosscom/coss/tree/main/apps/ui
+
+Button and native input composition adapted from the public Coss registry on September 24, 2026.
+The repository's `LICENSING.md` and `apps/ui/README.md` explicitly license `apps/ui/` under MIT; the root repository's default AGPL license does not apply to that directory.
+Styling and the reduced prop surface are modified for this application.
+
+MIT License
+
+Copyright (c) Cal.com, Inc. and coss ui contributors
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+## Aceternity UI
+
+Stateful Button reference and public registry source: https://ui.aceternity.com/components/stateful-button
+
+Copyright Aceternity Labs LLC.
+The interaction is adapted for this end-product application, including real external loading state, error handling, Lucide icons, and reduced-motion support.
+No paid component or template was purchased.
+Published end-product license: https://ui.aceternity.com/licence
+
+## Fonts and runtime packages
+
+Inter and Noto Sans are distributed under the SIL Open Font License.
+The PDF font license is in `public/fonts/OFL.txt`; Inter's license is in `public/fonts/Inter-OFL.txt`.
+React, Base UI, Motion, Lucide, Vite, and React-pdf retain their respective package licenses.

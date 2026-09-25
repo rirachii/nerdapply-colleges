@@ -1,0 +1,26 @@
+{
+  "source": "https://ed-public-download.scorecard.network/downloads/Most-Recent-Cohorts-Institution_06102026.zip",
+  "sourcePage": "https://collegescorecard.ed.gov/data/",
+  "release": "2026-06-10",
+  "retrieved": "2026-09-24",
+  "archiveSha256": "f56a181b000ca4914e924c16b6b81dcc656e25aeb2ac68ab7d271ac0f29ffd58",
+  "file": "Most-Recent-Cohorts-Institution.csv",
+  "count": 1752,
+  "scope": "Currently operating, predominantly bachelor-degree, public and private nonprofit institutions in the 50 US states and DC with enrolled undergraduates.",
+  "vintage": "Most recent non-null cohorts vary by field; release date is not the reporting year of every metric.",
+  "fields": {
+    "id": "UNITID",
+    "programs": "PCIPxx > 0 (share of degrees awarded in broad subject family; not a current program catalog)",
+    "programShares": "PCIPxx (broad subject share, capped as a ranking signal)",
+    "family": "OPEID6 (institution family, used to limit repeated campuses)",
+    "satAverage": "SAT_AVG (average among enrolled score submitters)",
+    "actMidpoint": "ACTCMMID",
+    "admissionRate": "ADM_RATE (institution-wide)",
+    "size": "UGDS",
+    "netPrice": "NPT4_PUB / NPT4_PRIV (average annual net price for the defined Title IV cohort, not a personal aid estimate)",
+    "tuitionIn": "TUITIONFEE_IN",
+    "tuitionOut": "TUITIONFEE_OUT",
+    "website": "INSTURL",
+    "calculator": "NPCURL"
+  }
+}
