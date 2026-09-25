@@ -84,7 +84,7 @@ describe('free-form profile extraction', () => {
       });
     },
   );
-  it.each([10, 15, 20])('accepts a requested list of %i colleges', (count) => {
+  it.each([10, 15, 20, 25])('accepts a requested list of %i colleges', (count) => {
     const profile = parseStudent(
       `A student loves programming and wants ${count} colleges.`,
     ).profile;
@@ -92,6 +92,16 @@ describe('free-form profile extraction', () => {
     expect(validateProfile(profile)).toBeNull();
     expect(recommend({ ...john(), count }).items).toHaveLength(count);
   });
+  it.each(['Give me 25 schools', 'Show me 25 colleges', 'Recommend 25 universities'])(
+    'accepts a concise list request: %s',
+    (brief) => {
+      expect(validatePrompt(brief)).toBeNull();
+      const { profile } = parseStudent(brief);
+      expect(profile.count).toBe(25);
+      expect(validateProfile(profile)).toBeNull();
+      expect(recommend(profile).items).toHaveLength(25);
+    },
+  );
   it('keeps unsupported requested list lengths explicit', () => {
     const result = parseStudent('A student loves programming and wants 12 colleges.');
     expect(result.profile.count).toBe(10);

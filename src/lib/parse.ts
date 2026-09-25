@@ -2,8 +2,12 @@ import { SUBJECTS, STATES, LIST_LENGTHS, DEFAULT_LIST_LENGTH } from './options';
 import type { ParsedProfile, StudentProfile } from './types';
 
 export const MAX_PROMPT_LENGTH = 4000;
+const LIST_REQUEST =
+  /\b(?:list of|shortlist of|looking for|wants?|needs?|give|show|find|recommend|include)\s+(?:(?:me|us)\s+)?(\d+)\s+(?:colleges?|schools?|universities|options)\b/i;
+
 export function validatePrompt(text: string): string | null {
-  if (text.trim().length < 20 || text.trim().split(/\s+/).length < 4)
+  const hasListRequest = LIST_LENGTHS.includes(Number(text.match(LIST_REQUEST)?.[1]));
+  if (!hasListRequest && (text.trim().length < 20 || text.trim().split(/\s+/).length < 4))
     return 'Add a little more detail: an academic interest, location, or learning preference.';
   if (text.length > MAX_PROMPT_LENGTH)
     return `Keep the student description under ${MAX_PROMPT_LENGTH.toLocaleString()} characters.`;
@@ -160,9 +164,7 @@ export function parseStudent(text: string): ParsedProfile {
     ),
   );
   if (hasPositive(/intimate campus/i) && !sizes.includes('small')) sizes.push('small');
-  const requestedCount = text.match(
-    /\b(?:list of|shortlist of|looking for|wants?|needs?|show|find|recommend|include)\s+(\d+)\s+(?:colleges?|schools?|universities|options)\b/i,
-  )?.[1];
+  const requestedCount = text.match(LIST_REQUEST)?.[1];
   const count =
     requestedCount && LIST_LENGTHS.includes(Number(requestedCount))
       ? Number(requestedCount)

@@ -1,4 +1,4 @@
-export const LIST_LENGTHS: readonly number[] = [4, 6, 8, 10, 15, 20];
+export const LIST_LENGTHS: readonly number[] = [4, 6, 8, 10, 15, 20, 25];
 export const DEFAULT_LIST_LENGTH = 10;
 export const SUBJECTS = [
   {

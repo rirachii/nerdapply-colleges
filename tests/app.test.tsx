@@ -65,6 +65,26 @@ async function generate(index = 0) {
   return user;
 }
 describe('counselor workflow', () => {
+  it('carries a 25-school brief into the starting list and editable preferences', async () => {
+    const user = userEvent.setup();
+    render(<App />);
+    await user.click(screen.getByLabelText('Student description'));
+    await user.paste('Give me 25 schools');
+    await user.click(screen.getByRole('button', { name: 'Find colleges' }));
+    expect(screen.getAllByRole('article')).toHaveLength(25);
+    expect(
+      within(screen.getByRole('complementary', { name: 'Student preferences' })).getByText(
+        '25 colleges',
+      ),
+    ).toBeInTheDocument();
+    expect(
+      screen
+        .getAllByRole('checkbox', { name: /Include .+ in student handout/ })
+        .filter((input) => (input as HTMLInputElement).checked),
+    ).toHaveLength(25);
+    await user.click(screen.getByRole('button', { name: 'Edit preferences' }));
+    expect(screen.getByLabelText('Shortlist length')).toHaveValue('25');
+  });
   it('defaults to All and filters Safety, Target, and Reach without changing selection', async () => {
     const user = await generate();
     const all = screen.getByRole('button', { name: /^All / });
